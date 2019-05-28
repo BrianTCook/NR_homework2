@@ -1,0 +1,40 @@
+\subsection{Part A}
+
+For this problem I set up a $16\times 16\times 16$ lattice of cells and then went about determining to which cell each particle should be assigned. This was achieved by iterating through the cells, computing the separation distance between the cell's center and each particle's location, and then determining the number of particles whose separation distance was less than the maximum value (namely, from the cell's center to one of the corners). 
+
+This formulation utilizes the fact that each particle has an exact location (or, in mathematical terms, can be described by a scaled Dirac delta function). If I had done part c this would have involved allocating a particle to each cell appropriately. For example, if a particle were very close to a cell corner then it could reasonably be assigned to the eight cells surrounding that corner.
+
+\lstinputlisting{homework2problem5parta.py}
+
+\clearpage
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{homework2problem5partafigure1.pdf}
+    \caption{The number of particles in each cell within the $z=4$ slice.}
+    \label{fig:25a1}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{homework2problem5partafigure2.pdf}
+    \caption{The number of particles in each cell within the $z=9$ slice.}
+    \label{fig:25a2}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{homework2problem5partafigure3.pdf}
+    \caption{The number of particles in each cell within the $z=11$ slice.}
+    \label{fig:25a3}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{homework2problem5partafigure4.pdf}
+    \caption{The number of particles in each cell within the $z=14$ slice.}
+    \label{fig:25a4}
+\end{figure}
+
+
+\clearpage

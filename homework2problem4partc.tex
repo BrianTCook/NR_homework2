@@ -1,0 +1,32 @@
+\subsection*{Part C}
+
+Each particle gets the following position and momentum update for the relevant scale factor $a$:
+
+\begin{align}
+\mat{x} &= \mat{q} + D(a) \mat{S}(\mat{q}), \\
+\mat{p} &= -(a-\Delta a /2)^{2}\dot{D}(a-\Delta a/2) \mat{S}(\mat{q}).
+\end{align}
+
+To compute the vectors $\mat{S}(\mat{q})$ for each particle I populate two arrays with values of $c_{k}$ (as defined in the instructions) and then take the \textit{inverse} Fourier transform. I then define a particle class that stores four vectors: $\mat{x}, \mat{p}, \mat{q}, \mat{S}(\mat{q})$. I compute the cofactors for the position and momentum vectors at each scale factor and then update the position/momentum vectors for each particle appropriately. I was having issues with the given ffmpeg command so I used convert instead to generate a gif that shows 90 frames in 3 seconds, where each of the frames corresponds to an appropriate scale factor.
+
+I anticipate that the level of collapse is not what was expected, and this can probably be attributed to either an erroneous computation of $D$ or initializing the values of $\mat{q}$ or $\mat{S}(\mat{q})$ incorrectly.
+
+\lstinputlisting{homework2problem4partc.py}
+
+\clearpage
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{homework2problem4partcfigure1.pdf}
+    \caption{Plotting the $y$ position of the first 10 particles.}
+    \label{fig:24c1}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{homework2problem4partcfigure2.pdf}
+    \caption{Plotting the $y$-component of the momentum $p_{y}$ of the first 10 particles.}
+    \label{fig:24c2}
+\end{figure}
+
+\clearpage

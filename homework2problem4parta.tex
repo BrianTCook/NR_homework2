@@ -1,0 +1,20 @@
+\subsection{Part A}
+
+We are tasked with building a numerical integrator such that we can determine the linear growth factor at any redshift:
+
+\begin{align}
+D(z) &= {5\Omega_{m} H_{0}^{2} \over 2} H(z) \int_{z}^{\infty} {1+z' \over H^{3}(z')} \dd z'
+\end{align}
+
+The improper integral is addressed by using a variable substitution proffered in Mark Newman's Computational Physics textbook:
+
+\begin{align}
+z &= {x-a \over 1+x-a}, \\
+\int_{a}^{\infty} f(x) \dd x &= \int_{0}^{1} {1\over (1-z)^{2}} \, f\left({z \over 1-z} + a\right) \dd z.
+\end{align}
+
+However, the integrand is undefined at $z = 1$ so we introducing a fudge factor $\epsilon = 10^{-14}$ to the integration limits. The desired accuracy is achieved by implementing Simpson's integration with $N$ points, comparing it to the same integration with $2N$ points, and continuing in that fashion until the difference is less than $10^{-5}$.
+
+\lstinputlisting{homework2problem4parta_result.txt}
+
+\lstinputlisting{homework2problem4parta.py}

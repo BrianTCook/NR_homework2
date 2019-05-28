@@ -1,0 +1,23 @@
+\subsection{Part E}
+
+In this part I use the KS test to compare a sample of my pseudo-random numbers to those provided in \texttt{randomnumbers.txt}. It appears that lists 1, 4, and 8 (zero-indexed) are the least representative of a list of Gaussian random numbers. This was determined by plotting $D$ as a function of which list was being compared (my KS test was being buggy). I suspect that the reason for the KS test failure was in the \texttt{siglevel} function where the arguments were often much greater than 1.18. Why this was not an issue for the last few samples of 1C, I am not sure.
+
+\lstinputlisting{homework2problem1parte.py}
+
+\clearpage
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{homework2problem1partefigure1.pdf}
+    \caption{KS statistics $D$ for each of the given lists of random numbers (zero-indexed).}
+    \label{fig:21e1}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{homework2problem1partefigure2.pdf}
+    \caption{Result of KS tests for each of the given lists of random numbers (zero-indexed).}
+    \label{fig:21e2}
+\end{figure}
+
+\clearpage

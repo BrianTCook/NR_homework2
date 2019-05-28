@@ -1,0 +1,16 @@
+\subsection{Part D}
+
+In this part we will be doing the same routine as in 1C but with Kuiper's test rather than Kolmogorov-Smirnov. This involves dividing the domain on which the two cumulated distribution functions lie and computing the maximum separation $D_{\pm}$ on each half. The statistic of interest is then $V = D_{+} + D_{-}$ and the significance level equation is slightly adjusted from that in 1C. The results from my Kuiper test and that found in \texttt{astropy} do not compare well for small $N_{numbers}$ but that is an issue with the test itself ($D_{\pm}$ are computed from samples of size $N_{numbers}/2$). 
+
+\lstinputlisting{homework2problem1partd.py}
+
+\clearpage
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{homework2problem1partdfigure1.pdf}
+    \caption{Result of Kuiper tests for $N_{samples} = (10^{1}, 10^{1.1}, \dots, 10^{5})$.}
+    \label{fig:21d1}
+\end{figure}
+
+\clearpage

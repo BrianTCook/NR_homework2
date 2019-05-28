@@ -1,0 +1,42 @@
+Building this tree required implementing several classes as well as functions within (and without) them to infer things like moments or children. It will be helpful to discuss them separately.
+
+\subsection*{\texttt{particle}}
+
+This object just has a mass and spatial coordinate in two dimensions. These capabilities are helpful when computing moments (where $n > 0$ multipole moments are in principle possible but not done here) in addition to deciding whether or not to partition an exisiting node into four children due to an overly crowded spacial region.
+
+\subsection*{\texttt{node}}
+
+The variables are the spatial information (location and size), particles within it, and children. In the case of leaf nodes the children list remains empty. The $n=0$ multiple moment is computed here because we are asked to compute this value recursively in the event this leaf (or branch) has the $100$th particle within.
+
+\subsection*{\texttt{particles\_in\_node}}
+
+Reads in the particle data and determines if that is within the node's spatial domain.
+
+\subsection*{\texttt{subdivide\_recursion}}
+
+If the number of allowable particles in one leaf exceeds a predetermined threshold value four children are created where the particles within the overcrowded node are divvied up appropriately.
+
+\subsection*{\texttt{find\_children}}
+
+Takes a node as input and determines which branches and leaves can be attributed to it. In the case of a leaf node a list containing the same leaf node is returned. For the root, every node is returned.
+
+\subsection*{\texttt{BH\_quadtree}}
+
+By using a \texttt{magic\_particle} variable this function does several things: subdivides the space into an appropriate tree structure, computes the multipole moments for the root/branches/leaf of \texttt{magic\_particle}, and plots the points within the tree structure as a spatial representation.
+
+This code was initially designed for 1000 randomly distributed particles so the number of nodes was considerably smaller. Once given the dataset there were considerably more large nodes with comparatively few particles and regions where the leaves represented remarkably small regions.
+
+\lstinputlisting{homework2problem7.py}
+
+\lstinputlisting{homework2problem7_toprint.txt}
+
+\clearpage
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{homework2problem7figure1.pdf}
+    \caption{The Barnes-Hut quadtree where the particle with index $i=100$ is shown.}
+    \label{fig:271}
+\end{figure}
+
+\clearpage

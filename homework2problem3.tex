@@ -1,0 +1,86 @@
+In this part we are tasked with solving the following ordinary differential equation numerically:
+
+\begin{align}
+\ddot{D} + 2{\dot{a} \over a}\dot{D} &= {3\over 2}\Omega_{0}H_{0}^{2}{1\over a^{3}} D.
+\end{align}
+
+We are using an Einstein-de Sitter Universe where $a(t) = \left({3\over 2}H_{0}t\right)^{2/3}$. This allows us to reduce the differential equation into the following form:
+
+\begin{align}
+\ddot{D} = -{4\over 3t}\dot{D} + {2\Omega_{0} \over 3t^{2}} D.
+\end{align}
+
+This ODE solver implements the classical Runge-Kutta method such that there are two coupled first order differential equations, namely
+
+\begin{align}
+{\dd D \over \dd t} &= \dot{D}, \\
+{\dd \dot{D} \over \dd t} &= -{4\over 3t}\dot{D} + {2\Omega_{0} \over 3t^{2}} D.
+\end{align}
+
+Now we need the analytic expressions to compare to! This can be done by beginning with the ansatz that the temporal part of the density perturbation follows a power law. Assuming $\Omega_{0} = 1$,
+
+\begin{align}
+D(t) &\propto t^{\alpha}, \\
+\alpha(\alpha-1) t^{\alpha-2} &= -{4 \over 3t} \alpha t^{\alpha - 1} + {2 \over 3t^{2}} t^{\alpha}.
+\end{align}
+
+Eliminating $t^{\alpha-2}$ from each term allows us to find the permissible values of $\alpha$:
+
+\begin{align}
+\alpha(\alpha-1) &= -{4 \over 3} \alpha + {2\over 3}, \\
+\to \alpha &= -1, \, {2\over 3}.
+\end{align}
+
+The analytic expressions for $D$ and $\dot{D}$, with no imposed initial conditions, are then
+
+\begin{align}
+D(t) &= A t^{2/3} + B t^{-1}, \\
+\dot{D}(t) &= {2\over 3} A t^{-1/3} - B t^{-2}.
+\end{align}
+
+This sets up a set of linear equations to determine $A$ and $B$ for a particular set of initial conditions:
+
+\begin{align}
+A + B &= D(1), \\
+{2\over 3}A - B &= \dot{D}(1).
+\end{align}
+
+The solutions to these linear equations are
+
+\begin{tabular}{c|c|c}
+Case & A & B \\
+\hline
+1 & 3 & 0 \\
+2 & 0 & 10 \\
+3 & 3 & 2 \\
+\end{tabular}
+
+Figures \ref{fig:231}, \ref{fig:232}, and \ref{fig:233} show that there is really good agreement between the numerical and analytic solutions to this ODE. The degree of agreement can probably be attributed to the fact that the solution is a comparatively simple linear combination of polynomials.
+
+\lstinputlisting{homework2problem3.py}
+
+
+\clearpage
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{homework2problem3figure1.pdf}
+    \caption{The evolution of $D(t)$ for the first initial conditions.}
+    \label{fig:231}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{homework2problem3figure2.pdf}
+    \caption{The evolution of $D(t)$ for the second initial conditions.}
+    \label{fig:232}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{homework2problem3figure3.pdf}
+    \caption{The evolution of $D(t)$ for the third initial conditions.}
+    \label{fig:233}
+\end{figure}
+
+\clearpage

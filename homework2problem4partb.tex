@@ -1,0 +1,44 @@
+\subsection{Part B}
+
+In the previous part we computed the value of $D$ at $z=50$, but looking forward to part c it will behoove us to proceed with evaluating the time derivative with the scale factor:
+
+\begin{align}
+\dot{D}(a) &= {\dd D \over \dd a} \dot{a}, \\
+&= {\dd D \over \dd a} (H(a) \, a).
+\end{align}
+
+By making the variable substitution $1+z' \equiv a'$, we can get $D$ in terms of the scale factor:
+
+\begin{align}
+D(a) &= {5\Omega_{m} \over 2} H_{0}^{2} H(a) \int_{0}^{1/a - 1} {\dd a' \over a'^{3} \, H^{3}(a')}.
+\end{align}
+
+Using the definition $f(a) \equiv \int_{0}^{1/a - 1} {\dd a' \over a'^{3} \, H^{3}(a')}$,
+
+\begin{align}
+\dot{D}(a) &= {5\Omega_{m} \over 2} H_{0}^{2}\left( H(a) {\dd f \over \dd a} + f(a) {\dd H \over \dd a}\right).
+\end{align}
+
+The fundamental theorem of calculus allows us to evaluate ${\dd f \over \dd a}$ readily:
+
+\begin{align}
+\dot{D}(a) &= {5\Omega_{m} \over 2} H_{0}^{2}\left( H(a) {1 \over a^{3} \, H^{3}(a)} + f(a) {\dd H \over \dd a}\right).
+\end{align}
+
+The derivative of the Hubble parameter with respect to scale factor is
+
+\begin{align}
+{\dd H \over \dd a} &= -{3\Omega_{m} \over 2a^{4}} {H_{0}^{2} \over H(a) }.
+\end{align}
+
+This leaves us with the desired result, namely $\dot{D}$ in terms of the scale factor:
+
+\begin{align}
+\dot{D}(a) &= {5\Omega_{m} \over 2} H_{0}^{2}\left({1 \over a^{3} \, H^{2}(a)} - {3\Omega_{m} \over 2a^{4}} {H_{0}^{2} \over H(a) } \int_{0}^{1/a - 1} {\dd a' \over a'^{3} \, H^{3}(a')} \right).
+\end{align}
+
+However, I think there is a bug somewhere as my values are dependent on the value of $H_{0}$; I am fairly certain that this is the incorrect result, which will invariably affect my plots for the $y$-component of the momentum for each of the first 10 particles in the next part.
+
+\lstinputlisting{homework2problem4partb_result.txt}
+
+\lstinputlisting{homework2problem4partb.py}

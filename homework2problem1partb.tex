@@ -1,0 +1,31 @@
+\subsection{Part B}
+
+The Box-Muller algorithm takes two random number lists $x_{1}$, $x_{2}$ (with uniform distribution $(0,1)$) and returns two lists $z_{1}$, $z_{2}$ that follow a bivariate normal distribution with $\mu = 0$, $\sigma^{2} = 1$:
+
+\begin{align}
+z_{1} &= \sqrt{-2 \ln x_{1}} \cos(2\pi \, x_{2}), \\
+z_{2} &= \sqrt{-2 \ln x_{1}} \sin(2\pi \, x_{2}),
+\end{align}
+
+
+where these transformations are applied element by element. The following transformation must be made to each element in the respective lists to ensure the distribution has the appropriate mean and standard deviation. Note: the next two equations are in Pythonese so the left hand side is taking on the value of the right hand side.
+
+\begin{align}
+z_{1} &= z_{1}\sigma + \mu, \\
+z_{2} &= z_{2}\sigma + \mu.
+\end{align}
+
+Using two lists of length 1000 pulled from our randomly generated numbers in problem 1 part A, we can get two lists that follow a Gaussian distribution. Figure \ref{fig:21c1} shows that the list $z_{1}$ follows the appropriate theoretical distribution. Included in the plot are $1\sigma, \dots, 4\sigma$ for reference.
+
+\lstinputlisting{homework2problem1partb.py}
+
+\clearpage
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{homework2problem1partbfigure1.pdf}
+    \caption{Comparison between Box-Muller transformed list of random numbers from part A to the appropriate Gaussian distribution.}
+    \label{fig:21b1}
+\end{figure}
+
+\clearpage

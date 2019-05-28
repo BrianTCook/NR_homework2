@@ -1,0 +1,35 @@
+The first things we must do is determine reasonable physical distances for this random field to represent. The largest EAGLE simulation (that I know of) has dimensions $100 \times 100 \times 100$ cMpc, so that will be my $x_{max}$ value. The corresponding minimum physical distance on which this random field operates is $x_{min} = x_{max}/N_{pixels}$; the numerical value for the 100 Mpc, 1024 pixel case is $x_{min} \approx 100$ kpc. The minimum and maximum wavenumbers $k_{min}, k_{max}$ with which we can work are
+
+\begin{align}
+k_{min} &= {2\pi \over x_{max}}, \\
+k_{max} &= {2\pi \over x_{min}}.
+\end{align} 
+
+The values $k_{1}$ and $k_{2}$ we will use to make the initial Gaussian random field are $(-k_{max}, \dots, -k_{min}, k_{min}, \dots, k_{max})$. I impose the symmetry condition $\bar{Y}(-\mat{k}) = \bar{Y}^{\star}(\mat{k})$ by filling in one half of the plane using Box-Muller, flip that along both axes, and then compute the left half using that flipped matrix's complex conjugate values. The results were poor with my random number sampling scheme so I utilized \texttt{random.sample} to get random numbers from the list I generated in problem 1 part a. Additionally, the \texttt{imshow} function was misbehaving when I plotted the real part of the Fourier transformed array so I just plot the absolute value.
+
+\lstinputlisting{homework2problem2.py}
+
+\clearpage
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{homework2problem2figure1.pdf}
+    \caption{Gaussian random field with power spectrum index $n=-1$.}
+    \label{fig:2221}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{homework2problem2figure2.pdf}
+    \caption{Gaussian random field with power spectrum index $n=-2$.}
+    \label{fig:222}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{homework2problem2figure3.pdf}
+    \caption{Gaussian random field with power spectrum index $n=-3$.}
+    \label{fig:223}
+\end{figure}
+
+\clearpage

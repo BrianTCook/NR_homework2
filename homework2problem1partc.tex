@@ -1,0 +1,18 @@
+\subsection{Part C}
+
+Here we are executing a handwritten KS-test and comparing it to the one available from \texttt{scipy}. We do so by utilizing the numerically efficient version of Equation (14.3.7) from the textbook to compute the significance level of the maximum observed discrepancy $D$ between my normal distribution (computed using the same Box-Muller routine from 1B) and the one derived from a Gaussian. Initially I computed both distribution functions using histograms but the theoretical normal distribution can be determined using an error function; I used the \texttt{scipy} version so as to avoid computing the integral needed for the error function repeatedly.
+
+As expected the $p$-value increases with the number of sampled numbers (as does the agreement my KS test and the one found in \texttt{scipy}); this is in effect an indication of switching from Poissonian to quasi-Gaussian statistics.
+
+\lstinputlisting{homework2problem1partc.py}
+
+\clearpage
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{homework2problem1partcfigure1.pdf}
+    \caption{Result of KS tests for $N_{samples} = (10^{1}, 10^{1.1}, \dots, 10^{5})$.}
+    \label{fig:21c1}
+\end{figure}
+
+\clearpage

@@ -1,0 +1,20 @@
+For this problem I mostly retrofitted the perceptron I wrote for the Neural Networks course offered by the computer science department. In essence you take a weights vector $(w_{0}, \mat{w})$, evaluate the expression
+
+\begin{align}
+y &= \mat{w}\cdot{\mat{x}} + w_{0},
+\end{align}
+
+for each input vector $\mat{x}$, and then adjust the weights if $y$ incorrectly classifies $\mat{x}$. The remaining functions apply the optimized weights to each input vector to get the appropriate classifications, which are shown with the computed short v. long classifications given in the dataset. This algorithm could be improved with more GRB data as well as a mechanism to account for missing data (such as writing a function where missing values can be inferred based on things like redshift or mass).
+
+\lstinputlisting{homework2problem6.py}
+
+\clearpage
+
+\begin{figure}[h]
+    \centering
+    \includegraphics{homework2problem6figure1.pdf}
+    \caption{A comparison between my predicted distribution of short v. long GRBs and the ones actually shown in the dataset.}
+    \label{fig:261}
+\end{figure}
+
+\clearpage
